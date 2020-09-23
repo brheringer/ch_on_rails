@@ -1,0 +1,43 @@
+Date
+Value
+Memo
+Account
+Counterpart?
+ResultCenter? (members, employees, missionaries, ministries)
+Tags? ()
+Event? 
+Universe (CH/CO)
+
+Sheets:
+Annual -> account is enough for the main part, but the bottom part...
+Monthly -> account is enough
+Offerings -> account + member
+Bruno e Gisele -> someone(not necessarly a member)
+D�bora
+Bethlehem
+Fundo Im�vel
+
+TODO saldo em conta corrente
+TODO saldo aplic. financeira
+TODO Saldo BethlehemChurch
+TODO Saldo Fundo Im�vel CH
+TODO D�bora Vasconcelos
+TODO Bruno e Gisele
+TODO Bernard Gyanfi
+TODO Saldo Daniel de Souza
+TODO Ajuste
+
+rails generate model Universe name:string
+rails generate model Account structure:string name:string universe:references
+rails generate model CostCenter structure:string name:string universe:references
+rails generate model Tag name:string
+rails generate model Entry date:date value:numeric memo:text account:references cost_center:references universe:references
+
+functionalities
+Context input: choose a default universe and a time window
+Portal - navigates for searches and reports
+CRUD Universe, Account, CostCenter, Tag, Entry
+Report: total by account, month
+Report: list+total for periodo+account+center+tag+universe
+Send report for e-mail
+Save report and searches to file (csv)
