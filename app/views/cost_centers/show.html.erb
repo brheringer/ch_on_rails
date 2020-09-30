@@ -1,0 +1,16 @@
+<% title 'Show Cost Center' %>
+
+<%= form_for @cost_center do |f| %>
+    <table>
+        <tr>
+            <th>Structure</td>
+            <td><%= @cost_center.structure %></td>
+        </tr>
+        <tr>
+            <th>Name</td>
+            <td><%= @cost_center.name %></td>
+        </tr>
+    </table>
+<% end %>
+
+<%= render partial: 'layouts/search_item_buttons', locals: { entity: @cost_center } %>

@@ -1,0 +1,28 @@
+<% title 'Cost Centers' %>
+
+<% if @cost_centers == nil || @cost_centers.length == 0 %>
+    <p>No cost_centers found.</p>
+    <%= link_to new_cost_center_path do %>
+        <%= image_tag "new_24px.svg", :title => 'New' %>
+    <% end %>
+<% else %>
+    <table class="table table-responsive table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Structure</th>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @cost_centers.each do |u| %>
+                <tr>
+                    <td><%= u.structure %></td>
+                    <td><%= u.name %></td>
+                    <td>
+                    <%= render partial: 'layouts/search_item_buttons', locals: { entity: u } %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% end %>

@@ -1,0 +1,32 @@
+<% title "#{incoming_title} Account" %>
+
+<%= form_for @account, url: {action: incoming_action} do |f| %>
+
+    <% if @account.errors.any? %>
+        <ul>
+            <% @account.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    <% end %>
+
+    <table>
+        <tr>
+            <td><%= f.label :structure, 'Structure' %></td>
+            <td><%= f.text_field :structure %></td>
+        </tr>
+        <tr>
+            <td><%= f.label :name, 'Name' %></td>
+            <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+        <td><%= f.label :universe, 'Universe' %></td>
+            <td>
+                <%= f.collection_select(:universe_id, Universe.all, :id, :name, { prompt: true }) %>
+            </td>
+        </tr>
+    </table>
+    <%= submit_tag 'Save' %>
+<% end %>
+
+<%= link_to "Search", accounts_path %>

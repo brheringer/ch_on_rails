@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ChOnRails</title>
+    <title>CH On Rails</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,19 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="col-12 bg-danger h1 mb-0">
+      <%= yield(:title) %>
+    </div>
+    <div class="col-12 bg-dark mt-0">
+      <%= link_to 'Portal', '/portal' %>
+    </div>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+    
+    <div class="navbar fixed-bottom bg-dark">
+    FOOTER
+    </div>
   </body>
 </html>

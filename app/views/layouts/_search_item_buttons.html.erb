@@ -1,0 +1,16 @@
+<%= link_to entity do %>
+    <%= image_tag "search_24px.svg", :title => 'Show' %>
+<% end %>
+<%= link_to [:edit, entity] do %>
+    <%= image_tag "edit_24px.svg", :title => 'Edit' %>
+<% end %>
+<%= link_to entity, method: :delete, data: { confirm: "Are you sure?" } do %>
+    <%= image_tag "delete_24px.svg", :title => 'Delete' %>
+<% end %>
+<%= link_to [:new, entity] do %>
+    <%= image_tag "new_24px.svg", :title => 'New' %>
+<% end %>
+<%= link_to "." do %>
+    <%= image_tag "search_24px.svg", :title => 'Search' %>
+<% end %>
+<%= image_tag "bug.svg", :title => entity.inspect %>

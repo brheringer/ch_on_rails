@@ -1,3 +1,5 @@
+TODO bootstrap
+
 Date
 Value
 Memo

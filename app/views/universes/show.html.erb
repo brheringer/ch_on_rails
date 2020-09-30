@@ -1,0 +1,12 @@
+<% title 'Show Universe' %>
+
+<%= form_for @universe do |f| %>
+    <table>
+        <tr>
+            <th>Name</td>
+            <td><%= @universe.name %></td>
+        </tr>
+    </table>
+<% end %>
+
+<%= render partial: 'layouts/search_item_buttons', locals: { entity: @universe } %>

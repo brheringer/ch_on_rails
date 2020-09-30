@@ -1,0 +1,32 @@
+<% title 'Show Entry' %>
+
+<%= form_for @entry do |f| %>
+    <table>
+        <tr>
+            <th>Date</td>
+            <td><%= @entry.date %></td>
+        </tr>
+        <tr>
+            <th>Value</td>
+            <td><%= @entry.value %></td>
+        </tr>
+        <tr>
+            <th>Account</td>
+            <td><%= @entry.account.name %></td>
+        </tr>
+        <tr>
+            <th>Cost Center</td>
+            <td><%= @entry.cost_center.name %></td>
+        </tr>
+        <tr>
+            <th>Memo</td>
+            <td><%= @entry.memo %></td>
+        </tr>
+        <tr>
+            <th>Universe</td>
+            <td><%= @entry.universe.name %></td>
+        </tr>
+    </table>
+<% end %>
+
+<%= render partial: 'layouts/search_item_buttons', locals: { entity: @entry } %>

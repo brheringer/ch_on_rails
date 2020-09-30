@@ -1,0 +1,16 @@
+<% title 'Show Account' %>
+
+<%= form_for @account do |f| %>
+    <table>
+        <tr>
+            <th>Structure</td>
+            <td><%= @account.structure %></td>
+        </tr>
+        <tr>
+            <th>Name</td>
+            <td><%= @account.name %></td>
+        </tr>
+    </table>
+<% end %>
+
+<%= render partial: 'layouts/search_item_buttons', locals: { entity: @account } %>

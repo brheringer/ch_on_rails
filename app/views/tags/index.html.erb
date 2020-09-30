@@ -1,0 +1,24 @@
+<% title 'Tags' %>
+
+<% if @tags == nil || @tags.length == 0 %>
+    <p>No tags found.</p>
+    <%= link_to new_tag_path do %>
+        <%= image_tag "new_24px.svg", :title => 'New' %>
+    <% end %>
+<% else %>
+    <table class="table table-responsive table-striped">
+        <thead>
+            <tr><th scope="col">Name</th></tr>
+        </thead>
+        <tbody>
+            <% @tags.each do |tag| %>
+                <tr>
+                    <td><%= tag.name %></td>
+                    <td>
+                    <%= render partial: 'layouts/search_item_buttons', locals: { entity: tag } %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% end %>

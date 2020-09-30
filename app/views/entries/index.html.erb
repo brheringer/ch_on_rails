@@ -1,0 +1,34 @@
+<% title 'Entries' %>
+
+<% if @entries == nil || @entries.length == 0 %>
+    <p>No entries found.</p>
+    <%= link_to new_entry_path do %>
+        <%= image_tag "new_24px.svg", :title => 'New' %>
+    <% end %>
+<% else %>
+    <table class="table table-responsive table-striped">
+        <thead>
+            <tr><th scope="col">Date</th></tr>
+            <tr><th scope="col">Value</th></tr>
+            <tr><th scope="col">Account</th></tr>
+            <tr><th scope="col">Cost Center</th></tr>
+            <tr><th scope="col">Memo</th></tr>
+            <tr><th scope="col">Universe</th></tr>
+        </thead>
+        <tbody>
+            <% @entries.each do |e| %>
+                <tr>
+                    <td><%= e.date %></td>
+                    <td><%= e.value %></td>
+                    <td><%= e.account.name %></td>
+                    <td><%= e.cost_center.name %></td>
+                    <td><%= e.memo %></td>
+                    <td><%= e.universe.name %></td>
+                    <td>
+                    <%= render partial: 'layouts/search_item_buttons', locals: { entity: e } %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% end %>

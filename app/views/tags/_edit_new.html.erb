@@ -1,0 +1,22 @@
+<% title "#{incoming_title} Tag" %>
+
+<%= form_for @tag, url: {action: incoming_action} do |f| %>
+
+    <% if @tag.errors.any? %>
+        <ul>
+            <% @tag.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    <% end %>
+
+    <table>
+        <tr>
+            <td><%= f.label :name, 'Name' %></td>
+            <td><%= f.text_field :name %></td>
+        </tr>
+    </table>
+    <%= submit_tag 'Save' %>
+<% end %>
+
+<%= link_to "Search", tags_path %>

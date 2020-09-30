@@ -1,0 +1,67 @@
+<% title 'Portal' %>
+
+<div class="row align-items-center m-2">
+    <%= render partial: 'portal_item', 
+            locals: {
+                incoming_label: 'Universes', 
+                incoming_bg: 'bg-success', 
+                incoming_path: universes_path, 
+                incoming_icon: 'universes_24px.svg' } %>
+
+    <div class="col-md-2">
+      <div class="thumbnail bg-primary">
+        <%= link_to accounts_path do %>
+          <%= image_tag "accounts_24px.svg", :style => "width:100%" %>
+          <div class="caption">
+            <p align="center">Accounts</p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="thumbnail bg-danger">
+            <%= link_to cost_centers_path do %>
+                <%= image_tag "cost-centers_24px.svg", :style => "width:100%" %>
+                <div class="caption">
+                <p align="center">Cost Centers</p>
+                </div>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="thumbnail bg-secondary">
+            <%= link_to tags_path do %>
+                <%= image_tag "tags_24px.svg", :style => "width:100%" %>
+                <div class="caption">
+                <p align="center">Tags</p>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<div class="row align-items-center m-2">
+    <div class="col-md-2">
+        <div class="thumbnail bg-warning">
+            <%= link_to entries_path do %>
+                <%= image_tag "entries_24px.svg", :style => "width:100%" %>
+                <div class="caption">
+                    <p align="center">Entries</p>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<hr/>
+<h2>TODO</h2>
+<ul>
+<li>Unit tests for controllers
+<li>Account -> Universe - eager loading not working
+<li>Navigation do index after delete - it says it is empty but that is not true
+<li>if @entity.destroy (treat errors)
+<li>CRUD index: refresh button
+<li>Better UI design, especially for CRUD show and edit
+</ul>

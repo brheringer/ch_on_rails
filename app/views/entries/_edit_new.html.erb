@@ -1,0 +1,45 @@
+<% title "#{incoming_title} Entry" %>
+
+<%= form_for @entry, url: {action: incoming_action} do |f| %>
+
+    <% if @entry.errors.any? %>
+        <ul>
+            <% @entry.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    <% end %>
+
+    <table>
+        <tr>
+            <td><%= f.label :date, 'Date' %></td>
+            <td><%= f.date_field :date %></td>
+        </tr>
+        <tr>
+            <td><%= f.label :value, 'Value' %></td>
+            <td><%= f.number_field :value %></td>
+        </tr>
+        <td><%= f.label :account, 'Account' %></td>
+            <td>
+                <%= f.collection_select(:account_id, Account.all, :id, :structure_and_name, { prompt: true }) %>
+            </td>
+        </tr>
+        <td><%= f.label :cost_center, 'Cost Center' %></td>
+            <td>
+                <%= f.collection_select(:cost_center_id, CostCenter.all, :id, :name, { prompt: true }) %>
+            </td>
+        </tr>
+        <tr>
+            <td><%= f.label :memo, 'Memo' %></td>
+            <td><%= f.text_area :memo %></td>
+        </tr>
+        <td><%= f.label :universe, 'Universe' %></td>
+            <td>
+                <%= f.collection_select(:universe_id, Universe.all, :id, :name, { prompt: true }) %>
+            </td>
+        </tr>
+    </table>
+    <%= submit_tag 'Save' %>
+<% end %>
+
+<%= link_to "Search", entries_path %>
