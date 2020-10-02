@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :accounts #, only: [:index, :show]
+  resources :accounts
+  resources :accounts_totalization_report, only: [:index]
   resources :cost_centers
   resources :entries
   resources :portal

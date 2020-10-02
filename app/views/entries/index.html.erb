@@ -8,12 +8,14 @@
 <% else %>
     <table class="table table-responsive table-striped">
         <thead>
-            <tr><th scope="col">Date</th></tr>
-            <tr><th scope="col">Value</th></tr>
-            <tr><th scope="col">Account</th></tr>
-            <tr><th scope="col">Cost Center</th></tr>
-            <tr><th scope="col">Memo</th></tr>
-            <tr><th scope="col">Universe</th></tr>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Value</th>
+                <th scope="col">Account</th>
+                <th scope="col">Cost Center</th>
+                <th scope="col">Memo</th>
+                <th scope="col">Universe</th>
+            </tr>
         </thead>
         <tbody>
             <% @entries.each do |e| %>

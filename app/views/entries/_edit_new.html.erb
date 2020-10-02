@@ -17,7 +17,7 @@
         </tr>
         <tr>
             <td><%= f.label :value, 'Value' %></td>
-            <td><%= f.number_field :value %></td>
+            <td><%= f.number_field :value, step: 0.01 %></td>
         </tr>
         <td><%= f.label :account, 'Account' %></td>
             <td>

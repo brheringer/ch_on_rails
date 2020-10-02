@@ -1,6 +1,6 @@
 class CostCentersController < ApplicationController
     def index
-        @cost_centers = CostCenter.includes(:universe).order(structure: :asc).all
+        @cost_centers = CostCenter.includes(:universe).order(structure: :asc)
     end
 
     def new

@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
     def index
-        @accounts = Account.includes(:universe).order(structure: :asc).all
+        @accounts = Account.includes(:universe).order(structure: :asc)
     end
 
     def new

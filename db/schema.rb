@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_23_003107) do
+ActiveRecord::Schema.define(version: 2020_09_30_113516) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "structure"
@@ -42,6 +42,11 @@ ActiveRecord::Schema.define(version: 2020_09_23_003107) do
     t.index ["account_id"], name: "index_entries_on_account_id"
     t.index ["cost_center_id"], name: "index_entries_on_cost_center_id"
     t.index ["universe_id"], name: "index_entries_on_universe_id"
+  end
+
+  create_table "entries_tags", id: false, force: :cascade do |t|
+    t.integer "entry_id", null: false
+    t.integer "tag_id", null: false
   end
 
   create_table "tags", force: :cascade do |t|

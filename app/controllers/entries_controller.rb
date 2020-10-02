@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
     def index
-        @entries = Entry.includes(:account, :cost_center, :universe).all().order(date: :desc)
+        @entries = Entry.includes(:account, :cost_center, :universe).order(date: :desc)
     end
 
     def new
@@ -35,7 +35,7 @@ class EntriesController < ApplicationController
 
     def destroy
         if Entry.destroy(params[:id])
-            render 'index'
+            redirect_to 'index'
         else
             render 'show'
         end
@@ -47,6 +47,6 @@ class EntriesController < ApplicationController
     end
 
     def entry_params
-        params.require(@entry).permit(:date, :value, :memo, :account_id, :cost_center_id, :universe_id)
+        params.require(:entry).permit(:date, :value, :memo, :account_id, :cost_center_id, :universe_id)
     end
 end
