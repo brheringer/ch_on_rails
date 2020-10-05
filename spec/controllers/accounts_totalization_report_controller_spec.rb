@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 describe AccountsTotalizationReportController do
-    before(:all) { setup_database }
+    before(:each) { setup_database }
 
     it 'should work... TODO' do
-        get :index
-        expect(assigns(:totalization)).to eq([e])
+        get :index, params: { start: Date.yesterday, end: Date.tomorrow, universe_id: 1 }
+        expect(assigns(:totalization)).to_not be_nil
+        expect(assigns(:totalization).length).to be 5
     end
 end
 

@@ -2,7 +2,7 @@ class AccountsTotalizationReportController < ApplicationController
     def index
         # #no need to find_each and find_in_batches
         # #filters start, end
-        if @params == nil || params.length == 0
+        if params == nil || !params.key?(:start)
             render 'index'
         else
             generate_report
@@ -16,7 +16,7 @@ class AccountsTotalizationReportController < ApplicationController
     end
 
     def get_entries
-        query = Entry.where(data: @params[:start]..@param[:end]).where(universe_id: @params[:universe_id])
+        query = Entry.where(date: params[:start]..params[:end]).where(universe_id: params[:universe_id])
         
         if params[:account_id]
             query.where(account_id: params[:account_id])
@@ -30,15 +30,14 @@ class AccountsTotalizationReportController < ApplicationController
             #TODO
         end
 
-        query.order(date: asc).joins(:account).joins(:cost_center).joins(:universe).left_outer_joins(:tags)
+        query.order(date: :asc).joins(:account).joins(:cost_center).joins(:universe).left_outer_joins(:tags)
 
-        byebug
         # #TODO order by account structure, filter by account/center/universe/tag
     end
 
     def totalize(entries)
         # #[{structure, description, total}]
-        totalization = []
+        totalization = {}
         entries.each do |e|
             sum_recursively(totalization, e.account.structure, e.account.name, e.value)
         end
@@ -47,7 +46,7 @@ class AccountsTotalizationReportController < ApplicationController
 
     def sum_recursively(totalization, structure, name, value)
         if !structure.empty?
-            if totalization.key?(structure)
+            if totalization.has_key?(structure)
                 totalization[structure][1] += value
             else
                 if name == nil
@@ -61,8 +60,8 @@ class AccountsTotalizationReportController < ApplicationController
     end
 
     def get_parent_structure(structure) #TODO refactor
-        i = structure.last_index_of('.') 
-        return i >= 0 ? structure.substring(0, i) : ''
+        i = structure.rindex('.') 
+        return i != nil && i >= 1 ? structure[0..i-1] : ''
     end
 end
 

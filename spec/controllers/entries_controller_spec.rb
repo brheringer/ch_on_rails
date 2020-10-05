@@ -13,6 +13,8 @@ describe EntriesController do
             ok |= e.save()
             get :index
             expect(ok).to be true
+            expect(assigns(:entries)).to_not be_nil
+            expect(assigns(:entries).length).to be 1
             expect(assigns(:entries)).to eq([e])
         end
 
